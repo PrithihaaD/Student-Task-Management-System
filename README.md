@@ -52,54 +52,72 @@ Student-Task-Management-System/
 ├── package.json
 └── package-lock.json
 
-🔗 API Endpoints
-Task Management
-Method	Endpoint	Description
-GET	/api/tasks	Get all tasks
-POST	/api/tasks	Create a task
-GET	/api/tasks/:id	Get task by ID
-PUT	/api/tasks/:id	Update a task
-DELETE	/api/tasks/:id	Delete a task
+se this cleaner version. It will look much better on GitHub:
+## 🔗 API Endpoints
 
+### 📋 Task Management
 
-Authentication
-Method	Endpoint	Description
-POST	/api/auth/register	Register a user
-POST	/api/auth/register-many	Register multiple users
-POST	/api/auth/login	Login a user
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `GET` | `/api/tasks` | Get all tasks |
+| `POST` | `/api/tasks` | Create a new task |
+| `GET` | `/api/tasks/:id` | Get task by ID |
+| `PUT` | `/api/tasks/:id` | Update a task |
+| `DELETE` | `/api/tasks/:id` | Delete a task |
 
+### 🔐 Authentication
 
-🔐 Authentication
-User passwords are securely hashed using bcryptjs before being stored in MongoDB.
-After successful login, the application generates a JWT token containing the user's ID and role. The token is used for authentication when accessing protected APIs.
-📚 API Documentation
-Swagger UI provides interactive documentation and testing for the available APIs.
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `POST` | `/api/auth/register` | Register a user |
+| `POST` | `/api/auth/register-many` | Register multiple users |
+| `POST` | `/api/auth/login` | Login a user |
+
+---
+
+## 🔐 Authentication
+
+Passwords are securely hashed using **bcryptjs** before being stored in MongoDB.
+
+After successful login, the application generates a **JWT token** containing the user's ID and role. The token is used to authenticate protected API requests.
+
+---
+
+## 📚 API Documentation
+
+**Swagger UI**
+
+```text
 http://localhost:5000/api-docs
 
-The deployed application also provides Swagger documentation through Render.
+Swagger provides interactive API documentation and testing for both Task Management and Authentication APIs.
 🗄️ Database
-MongoDB Atlas is used as the database.
-Main collections:
-- tasks – stores student task information
-- users – stores registered user information
-🚀 Running the Project
+The application uses MongoDB Atlas with Mongoose.
+Collection	Purpose
+tasks	Stores student task information
+users	Stores registered user information
+
+
+🚀 Getting Started
 git clone https://github.com/PrithiaaD/Student-Task-Management-System.git
 cd Student-Task-Management-System
 npm install
 node server.js
 
-A .env file is required for the MongoDB connection and JWT secret.
+Create a .env file with the required MongoDB connection string and JWT secret before starting the application.
 🧪 Testing
 The APIs were tested using:
-- Postman for API testing
-- Swagger UI for API documentation and interactive testing
+- Postman — API development and testing
+- Swagger UI — API documentation and interactive testing
 🌐 Deployment
-The backend is deployed using Render and the project source code is maintained on GitHub.
-📈 Future Enhancements
-- Complete role-based authorization
+The backend is deployed using Render, with the source code maintained on GitHub.
+🔮 Future Enhancements
+- Role-based authorization
 - User-specific task management
 - Refresh token support
 - Frontend application
 - Task notifications and reminders
 ✅ Project Status
-Completed and successfully deployed.
+Completed, tested, and successfully deployed.
+
+ 
