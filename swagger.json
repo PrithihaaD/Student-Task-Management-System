@@ -3,21 +3,29 @@
   "info": {
     "title": "Student Task Management System API",
     "version": "1.0.0",
-    "description": "REST API for managing student tasks. Supports creating, listing, filtering, updating, and deleting tasks."
+    "description": "REST API for managing student tasks and user authentication."
   },
+
   "servers": [
     {
       "url": "http://localhost:5000",
       "description": "Local development server"
     }
   ],
+
   "tags": [
     {
       "name": "Tasks",
       "description": "Task management endpoints"
+    },
+    {
+      "name": "Authentication",
+      "description": "User registration and login endpoints"
     }
   ],
+
   "paths": {
+
     "/api/tasks": {
       "get": {
         "tags": ["Tasks"],
@@ -52,7 +60,9 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": { "$ref": "#/components/schemas/Task" }
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  }
                 }
               }
             }
@@ -61,21 +71,26 @@
             "description": "Server error",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
         }
       },
+
       "post": {
         "tags": ["Tasks"],
         "summary": "Create a new task",
-        "description": "Creates a new task. Only `title` is required.",
+        "description": "Creates a new task. Only title is required.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/TaskInput" }
+              "schema": {
+                "$ref": "#/components/schemas/TaskInput"
+              }
             }
           }
         },
@@ -84,7 +99,9 @@
             "description": "Task created successfully",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Task" }
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
               }
             }
           },
@@ -92,13 +109,16 @@
             "description": "Invalid task data",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
         }
       }
     },
+
     "/api/tasks/{id}": {
       "get": {
         "tags": ["Tasks"],
@@ -108,7 +128,9 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "MongoDB task ID"
           }
         ],
@@ -117,7 +139,9 @@
             "description": "Task retrieved successfully",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Task" }
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
               }
             }
           },
@@ -125,7 +149,9 @@
             "description": "Invalid task ID",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           },
@@ -133,12 +159,15 @@
             "description": "Task not found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
         }
       },
+
       "put": {
         "tags": ["Tasks"],
         "summary": "Update a task",
@@ -148,7 +177,9 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "MongoDB task ID"
           }
         ],
@@ -156,7 +187,9 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/TaskInput" }
+              "schema": {
+                "$ref": "#/components/schemas/TaskInput"
+              }
             }
           }
         },
@@ -165,7 +198,9 @@
             "description": "Task updated successfully",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Task" }
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
               }
             }
           },
@@ -173,7 +208,9 @@
             "description": "Invalid task data or ID",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           },
@@ -181,12 +218,15 @@
             "description": "Task not found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
         }
       },
+
       "delete": {
         "tags": ["Tasks"],
         "summary": "Delete a task",
@@ -195,7 +235,9 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "MongoDB task ID"
           }
         ],
@@ -204,7 +246,9 @@
             "description": "Task deleted successfully",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/DeleteResponse" }
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteResponse"
+                }
               }
             }
           },
@@ -212,7 +256,9 @@
             "description": "Invalid task ID",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           },
@@ -220,7 +266,132 @@
             "description": "Task not found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/api/auth/register": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Register a new student",
+        "description": "Creates a new student account. The password is securely hashed before storage.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User already exists or invalid data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/api/auth/register-many": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Register multiple students",
+        "description": "Creates multiple student accounts using a JSON array.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RegisterInput"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Users registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterManyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid user data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User login",
+        "description": "Authenticates a user and returns a JWT token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid email or password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
@@ -228,8 +399,10 @@
       }
     }
   },
+
   "components": {
     "schemas": {
+
       "TaskInput": {
         "type": "object",
         "required": ["title"],
@@ -261,6 +434,7 @@
           }
         }
       },
+
       "Task": {
         "type": "object",
         "properties": {
@@ -293,6 +467,114 @@
           }
         }
       },
+
+      "RegisterInput": {
+        "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Test Student"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "teststudent@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "example": "Test@123"
+          }
+        }
+      },
+
+      "LoginInput": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "teststudent@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "example": "Test@123"
+          }
+        }
+      },
+
+      "RegisterResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "User registered successfully"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      },
+
+      "RegisterManyResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Users registered successfully"
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Login successful"
+          },
+          "token": {
+            "type": "string",
+            "example": "JWT_TOKEN"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      },
+
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "652f1a2b3c4d5e6f7a8b9c0d"
+          },
+          "name": {
+            "type": "string",
+            "example": "Test Student"
+          },
+          "email": {
+            "type": "string",
+            "example": "teststudent@gmail.com"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["student", "admin"],
+            "example": "student"
+          }
+        }
+      },
+
       "DeleteResponse": {
         "type": "object",
         "properties": {
@@ -300,9 +582,12 @@
             "type": "string",
             "example": "Task deleted successfully"
           },
-          "task": { "$ref": "#/components/schemas/Task" }
+          "task": {
+            "$ref": "#/components/schemas/Task"
+          }
         }
       },
+
       "Error": {
         "type": "object",
         "properties": {
