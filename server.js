@@ -7,6 +7,9 @@ const taskRoutes = require("./routes/taskRoutes");
 const swaggerSpec = require("./swagger.json");
 
 const app = express();
+app.get("/", (req, res) => {
+    res.send("Student Task Management System API is running");
+});
 
 app.use(express.json());
 
