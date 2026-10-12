@@ -1,42 +1,31 @@
-
 # 🎓 Student Task Management System
 
-A RESTful backend application built using **Node.js, Express.js, and MongoDB** to manage student tasks and user authentication.
-
-## 📌 Project Overview
-
-The Student Task Management System provides APIs for creating, viewing, updating, deleting, and filtering student tasks. It also includes user registration, secure password hashing, and JWT-based authentication.
+A RESTful backend application built with Node.js, Express.js, and MongoDB for managing student tasks and user authentication.
 
 ## ✨ Features
 
-- 📝 Task creation and management
-- 🔍 Task filtering using query parameters
-- 👤 User registration and login
-- 🔐 Password hashing using bcryptjs
-- 🎟️ JWT-based authentication
-- 🗄️ MongoDB Atlas database
-- 📚 Swagger API documentation
-- 🧪 Postman API testing
-- 🚀 Render deployment
+- Task creation, viewing, updating, and deletion
+- Task filtering using query parameters
+- User registration and login
+- Secure password hashing with bcryptjs
+- JWT-based authentication
+- MongoDB Atlas integration
+- Swagger API documentation
+- Postman API testing
+- GitHub version control
+- Render deployment
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies
 
-| Technology | Purpose |
-|------------|---------|
-| Node.js | Backend runtime |
-| Express.js | REST API development |
-| MongoDB Atlas | Database |
-| Mongoose | Database operations |
-| bcryptjs | Password hashing |
-| JWT | Authentication |
-| Swagger | API documentation |
-| Postman | API testing |
-| Git & GitHub | Version control |
-| Render | Deployment |
+Backend: Node.js, Express.js
+Database: MongoDB Atlas, Mongoose
+Authentication: bcryptjs, JSON Web Token (JWT)
+Testing & Documentation: Postman, Swagger UI
+Deployment: Render
+Version Control: Git, GitHub
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-```text
 Student-Task-Management-System/
 │
 ├── middleware/
@@ -52,72 +41,70 @@ Student-Task-Management-System/
 ├── package.json
 └── package-lock.json
 
-se this cleaner version. It will look much better on GitHub:
 ## 🔗 API Endpoints
 
-### 📋 Task Management
+### Task Management
 
-| Method | Endpoint | Description |
-|:------:|----------|-------------|
-| `GET` | `/api/tasks` | Get all tasks |
-| `POST` | `/api/tasks` | Create a new task |
-| `GET` | `/api/tasks/:id` | Get task by ID |
-| `PUT` | `/api/tasks/:id` | Update a task |
-| `DELETE` | `/api/tasks/:id` | Delete a task |
+GET     /api/tasks
+POST    /api/tasks
+GET     /api/tasks/:id
+PUT     /api/tasks/:id
+DELETE  /api/tasks/:id
 
-### 🔐 Authentication
+### Authentication
 
-| Method | Endpoint | Description |
-|:------:|----------|-------------|
-| `POST` | `/api/auth/register` | Register a user |
-| `POST` | `/api/auth/register-many` | Register multiple users |
-| `POST` | `/api/auth/login` | Login a user |
-
----
+POST    /api/auth/register
+POST    /api/auth/register-many
+POST    /api/auth/login
 
 ## 🔐 Authentication
 
-Passwords are securely hashed using **bcryptjs** before being stored in MongoDB.
+Passwords are hashed using bcryptjs before being stored in MongoDB.
 
-After successful login, the application generates a **JWT token** containing the user's ID and role. The token is used to authenticate protected API requests.
+After successful login, the application generates a JWT token containing the user's ID and role. The token is used to authenticate protected API requests.
 
----
+## 📚 Swagger Documentation
 
-## 📚 API Documentation
+Swagger UI provides interactive documentation and testing for the APIs.
 
-**Swagger UI**
-
-```text
+Local URL:
 http://localhost:5000/api-docs
 
-Swagger provides interactive API documentation and testing for both Task Management and Authentication APIs.
-🗄️ Database
-The application uses MongoDB Atlas with Mongoose.
-Collection	Purpose
-tasks	Stores student task information
-users	Stores registered user information
+## 🗄️ Database
 
+The application uses MongoDB Atlas.
 
-🚀 Getting Started
+tasks  - Stores student task information
+users  - Stores registered user information
+
+## 🚀 Getting Started
+
 git clone https://github.com/PrithiaaD/Student-Task-Management-System.git
+
 cd Student-Task-Management-System
+
 npm install
+
 node server.js
 
-Create a .env file with the required MongoDB connection string and JWT secret before starting the application.
-🧪 Testing
-The APIs were tested using:
-- Postman — API development and testing
-- Swagger UI — API documentation and interactive testing
-🌐 Deployment
-The backend is deployed using Render, with the source code maintained on GitHub.
-🔮 Future Enhancements
-- Role-based authorization
+Create a .env file containing the MongoDB connection string and JWT secret.
+
+## 🧪 Testing
+
+The APIs were tested using Postman and Swagger UI.
+
+## 🌐 Deployment
+
+The backend is deployed on Render and the source code is maintained on GitHub.
+
+## 🔮 Future Enhancements
+
+- Complete role-based authorization
 - User-specific task management
 - Refresh token support
 - Frontend application
 - Task notifications and reminders
-✅ Project Status
-Completed, tested, and successfully deployed.
 
- 
+## ✅ Project Status
+
+Completed, tested, and successfully deployed.
